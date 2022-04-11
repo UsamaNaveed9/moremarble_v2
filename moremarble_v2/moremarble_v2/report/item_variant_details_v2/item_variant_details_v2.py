@@ -12,7 +12,10 @@ def execute(filters=None):
 	data = get_data(filters.item)
 
 	for rec in data:
-		rec["stock_in_slab"] = rec.current_stock/rec.length*rec.width
+		length = rec['length']
+		width = rec['width']
+		area = length*width
+		rec["stock_in_slab"] = rec['current_stock']/area
 
 
 	return columns, data
